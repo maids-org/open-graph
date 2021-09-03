@@ -7,8 +7,8 @@ interface ParsedReqs {
   handle: string | string[] | undefined;
 }
 
-// declare module 'puppeteer-core';
-// declare module 'puppeteer';
+declare module 'puppeteer-core';
+declare module 'puppeteer';
 
 type Browser = any;
 type ConnectOptions = any;
