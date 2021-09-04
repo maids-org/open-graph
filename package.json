@@ -1,5 +1,5 @@
 {
-  "name": "maid-og",
+  "name": "maid.og",
   "version": "1.0.0",
   "description": "using serverless function to create og images",
   "main": "dist/card.js",
