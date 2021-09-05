@@ -1,6 +1,6 @@
 <h2 align="center">Mad Maids OG Generator</h2>
 
-<p align="center"><a href="https://maid.uz"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=vercel&message=not deployed&logoColor=eceff4&logo=github&colorA=000000&colorB=ffffff"/></a></p>
+<p align="center"><a href="https://og.maid.uz"><img src="https://img.shields.io/static/v1.svg?style=flat-square&label=vercel&message=not deployed&logoColor=eceff4&logo=github&colorA=000000&colorB=ffffff"/></a></p>
 
 **This project was built with [next.js](https://github.com/vercel/next.js) on
 [Node.js](https://nodejs.org/en/). This website was created for generating og:image contents
