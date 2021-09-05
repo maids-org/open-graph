@@ -1,9 +1,9 @@
 {
   "name": "maid.og",
   "version": "1.0.0",
-  "description": "using serverless function to create og images",
+  "description": "Using serverless function to create og images",
   "main": "dist/card.js",
-  "repository": "git@github.com:mad-maids/maid.og.git",
+  "repository": "https://github.com/mad-maids/maid.og.git",
   "author": "Mad Maids (https://maid.uz)",
   "license": "MIT",
   "scripts": {
