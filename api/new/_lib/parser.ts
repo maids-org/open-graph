@@ -1,8 +1,8 @@
 import { IncomingMessage } from 'http';
 import { parse } from 'url';
 
-const parseReqs = (req: IncomingMessage) => {
-  const { query = {} } = parse(req.url || '', true);
+export function parseRequest(req: IncomingMessage) {
+  const { query } = parse(req.url || '/', true);
 
   const { author, title, website, image, handle } = query;
   const parameters = [author, title, website, image, handle];
@@ -13,16 +13,15 @@ const parseReqs = (req: IncomingMessage) => {
     }
   });
 
-  const parsedReqs: ParsedReqs = {
+  const parsedRequest: ParsedReqs = {
     author,
     title,
     website,
     image,
     handle,
   };
-  console.log(JSON.stringify(parsedReqs));
 
-  return parsedReqs;
-};
+  return parsedRequest;
+}
 
-export default parseReqs;
+export default parseRequest;
