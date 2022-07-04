@@ -14,11 +14,11 @@ export function parseRequest(req: IncomingMessage) {
   });
 
   const parsedRequest: ParsedReqs = {
-    author,
-    title,
-    website,
-    image,
-    handle,
+    author: author ? author : "Maiden",
+    title: title ? title : "Welcome to Team Mad Maids!",
+    website: website ? website : "https://maid.uz",
+    image: image ? image : "https://og.maid.uz/avatar.jpeg",
+    handle: handle ? handle : "@madmaids",
   };
 
   return parsedRequest;
