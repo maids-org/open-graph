@@ -1,38 +1,35 @@
 import { IncomingMessage, ServerResponse } from 'http';
+import { parseRequest } from './_lib/parser';
+import { getScreenshot } from './_lib/chromium';
+import { getHtml } from './_lib/template';
 
-import parseReqs from './parser';
-import getHtml from './template';
-import writeTempFile from './file';
-import getScreenShot from './chromium';
+const isDev = !process.env.AWS_REGION;
+const isHtmlDebug = process.env.OG_HTML_DEBUG === '1';
 
-const isDev = process.env.NOW_REGION === 'dev1';
-
-const handler = async (req: IncomingMessage, res: ServerResponse) => {
+export default async function handler(
+  req: IncomingMessage,
+  res: ServerResponse,
+) {
   try {
-    const parsedReqs = parseReqs(req);
-    const html = getHtml(parsedReqs);
-
-    const { title, author } = parsedReqs;
-    const fileName = [title, author].join('-');
-    const filePath = await writeTempFile(fileName, html);
-    const fileUrl = `file://${filePath}`;
-
-    const file = await getScreenShot(fileUrl, isDev);
-
+    const parsedReq = parseRequest(req);
+    const html = getHtml(parsedReq);
+    if (isHtmlDebug) {
+      res.setHeader('Content-Type', 'text/html');
+      res.end(html);
+      return;
+    }
+    const file = await getScreenshot(html, isDev);
     res.statusCode = 200;
-    res.setHeader('Content-Type', 'image/jpeg');
+    res.setHeader('Content-Type', `image/jpeg`);
     res.setHeader(
       'Cache-Control',
-      'public,immutable, no-transform,s-max-age=21600,max-age=21600',
+      `public, immutable, no-transform, s-maxage=31536000, max-age=31536000`,
     );
     res.end(file);
-  } catch (err) {
+  } catch (e) {
     res.statusCode = 500;
     res.setHeader('Content-Type', 'text/html');
-    res.end('<h1>Internal Error</h1> <p>Sorry, an error occurred.</p>');
-
-    console.error(err);
+    res.end('<h1>Internal Error</h1><p>Sorry, there was a problem</p>');
+    console.error(e);
   }
-};
-
-export default handler;
+}
