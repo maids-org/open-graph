@@ -4,7 +4,7 @@
     "module": "commonjs",
     "target": "esnext",
     "moduleResolution": "node",
-    "jsx": "react",
+    "jsx": "preserve",
     "sourceMap": true,
     "strict": true,
     "noFallthroughCasesInSwitch": true,
@@ -14,10 +14,26 @@
     "noUnusedParameters": true,
     "removeComments": true,
     "preserveConstEnums": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "incremental": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true
   },
-
   "exclude": [
     "./node_modules"
+  ],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
   ]
 }
