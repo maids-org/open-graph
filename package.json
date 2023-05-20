@@ -1,5 +1,5 @@
 {
-  "name": "maid.og",
+  "name": "open-graph",
   "version": "1.0.0",
   "description": "Using serverless function to create og images",
   "main": "dist/index.js",
@@ -14,7 +14,7 @@
     "dev": "next dev",
     "lint": "next lint",
     "build": "next build",
-    "format": "yarn format:check --write",
+    "format": "pnpm run format:check --write",
     "format:check": "prettier --check \"{components,pages}/**/*.{ts,tsx}\""
   },
   "dependencies": {
